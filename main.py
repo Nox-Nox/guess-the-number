@@ -1,16 +1,23 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import random
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def pick_a_number():
+    num = int(input("choose a number between 1 to 10"))
+    print(num)
+    while num < 1 or num > 10:
+        num = int(input("Your guessed number is out of the given range, please choose a number between 1 to 10"))
+    return num
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    guessed = False
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+while not guessed:
+
+    ai_chosen_number = random.randrange(1, 10)
+    number = pick_a_number()
+    if number == ai_chosen_number:
+        print("You guessed the right number!")
+        guessed = True
+    else:
+        print(f"You failed, the right number was {ai_chosen_number}, try again!")
