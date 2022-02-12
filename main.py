@@ -74,7 +74,7 @@ def main():
         reset_random_number()
     else:
         ResultMessage.set(
-            f"You failed lol, the right number was {ai_chosen_number} dumbness, \n try again if you wanna "
+            f"You failed lol, the right number was {ai_chosen_number} dumbass, \n try again if you wanna "
             f"feel even more stupid")
         rounds += 1
         RoundNumber.set(rounds)
