@@ -5,7 +5,7 @@ from tkinter import messagebox
 window = Tk()
 window.geometry("500x320")
 window.resizable(None)
-window.title("Guess the number!")
+window.title("Guess the number noob :3")
 
 rounds = 0
 victory = 0
@@ -15,7 +15,7 @@ Defeat = IntVar()
 Number = IntVar()
 RoundNumber = IntVar()
 ResultMessage = StringVar()
-ResultMessage.set("You can start")
+ResultMessage.set("Are you retarded? just start already LMAO")
 ai_chosen_number = random.randrange(1, 10)
 
 
@@ -56,33 +56,39 @@ def main():
     global rounds
     global victory
     global defeat
-
     number = Number.get()
     log(number)
     while number < 1 or number > 10:
-        ResultMessage.set(f"Your guessed number {number} is out of the given range,\n please choose a number between 1 "
-                          "to 10")
-        window.wait_variable(Number)
+        ResultMessage.set(
+            f"Yo wtf? can't you read? is {number} a number between the given range?\n please be less autistic and "
+            f"choose a number between 1 to 10 ")
+        if number <1 or number > 10:
+            window.wait_variable(Number)
+
     if number == ai_chosen_number:
-        ResultMessage.set("You guessed the right number!")
+        ResultMessage.set("Wow... what an alpha man...")
         rounds += 1
         RoundNumber.set(rounds)
         victory += 1
         Victory.set(victory)
         reset_random_number()
     else:
-        ResultMessage.set(f"You failed, the right number was {ai_chosen_number}, try again!")
+        ResultMessage.set(f"You failed lol, the right number was {ai_chosen_number} dumbass, \n try again if you wanna "
+                          f"feel even more stupid")
         rounds += 1
         RoundNumber.set(rounds)
         defeat += 1
         Defeat.set(defeat)
         reset_random_number()
+
     if victory == 3:
-        messagebox.showinfo("showinfo", "You won")
+        messagebox.showinfo("Game result", "Oh... you are actually amazing... wanna go on a date with me? *blush*")
         reset_game()
     if defeat == 3:
-        messagebox.showinfo("showinfo", "You lost")
+        messagebox.showinfo("Game result", "LMAOOOO WHAT A LOSER, don't you ever try again just press the exit button "
+                                           "and go play Minecraft LMAO")
         reset_game()
+
 
 Label(window, text="Round", font='arial 20 bold').pack()
 Label(window, textvariable=RoundNumber, font='arial 20 bold').pack()
@@ -93,7 +99,7 @@ Label(window, text="Victories:", font='arial 18 bold').place(x=0, y=0)
 Label(window, textvariable=Defeat, font='arial 20 bold').place(x=478, y=0)
 Label(window, text="Defeats:", font='arial 18 bold').place(x=382, y=0)
 
-Label(window, text="Pick a number", font='arial 10 bold').place(x=200, y=100)
+Label(window, text="PiCk A nUmBeR BeTwEeN 1 to 10", font='arial 14 bold').place(x=115, y=100)
 Entry(window, textvariable=Number, font='arial 10 bold').place(x=180, y=140)
 
 Label(window, textvariable=ResultMessage, font='arial 12 bold').pack(side=BOTTOM)
