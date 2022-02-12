@@ -45,10 +45,10 @@ def reset_game():
     rounds = 0
     victory = 0
     defeat = 0
-    Number.set("")
-    Victory.set("")
-    Defeat.set("")
-    RoundNumber.set("")
+    Number.set(0)
+    Victory.set(0)
+    Defeat.set(0)
+    RoundNumber.set(0)
 
 
 def main():
@@ -62,7 +62,7 @@ def main():
         ResultMessage.set(
             f"Yo wtf? can't you read? is {number} a number between the given range?\n please be less autistic and "
             f"choose a number between 1 to 10 ")
-        if number <1 or number > 10:
+        if number < 1 or number > 10:
             window.wait_variable(Number)
 
     if number == ai_chosen_number:
@@ -73,8 +73,9 @@ def main():
         Victory.set(victory)
         reset_random_number()
     else:
-        ResultMessage.set(f"You failed lol, the right number was {ai_chosen_number} dumbass, \n try again if you wanna "
-                          f"feel even more stupid")
+        ResultMessage.set(
+            f"You failed lol, the right number was {ai_chosen_number} dumbness, \n try again if you wanna "
+            f"feel even more stupid")
         rounds += 1
         RoundNumber.set(rounds)
         defeat += 1
@@ -85,7 +86,7 @@ def main():
         messagebox.showinfo("Game result", "Oh... you are actually amazing... wanna go on a date with me? *blush*")
         reset_game()
     if defeat == 3:
-        messagebox.showinfo("Game result", "LMAOOOO WHAT A LOSER, don't you ever try again just press the exit button "
+        messagebox.showinfo("Game result", "LMAO WHAT A LOSER, don't you ever try again just press the exit button "
                                            "and go play Minecraft LMAO")
         reset_game()
 
@@ -99,13 +100,13 @@ Label(window, text="Victories:", font='arial 18 bold').place(x=0, y=0)
 Label(window, textvariable=Defeat, font='arial 20 bold').place(x=478, y=0)
 Label(window, text="Defeats:", font='arial 18 bold').place(x=382, y=0)
 
-Label(window, text="PiCk A nUmBeR BeTwEeN 1 to 10", font='arial 14 bold').place(x=115, y=100)
+Label(window, text="PiCk A nUmBeR BeTwEeN 1 tO 10", font='arial 14 bold').place(x=115, y=100)
 Entry(window, textvariable=Number, font='arial 10 bold').place(x=180, y=140)
 
 Label(window, textvariable=ResultMessage, font='arial 12 bold').pack(side=BOTTOM)
 
-Button(window, font='arial 10 bold', text='EXIT', width=6, command=exit, bg='OrangeRed', padx=2, pady=2).place(x=10,
-                                                                                                               y=200)
+Button(window, font='arial 10 bold', text='EXIT', width=6, command=exit, bg='Red', padx=2, pady=2).place(x=10,
+                                                                                                         y=200)
 Button(window, font='arial 10 bold', text='CONFIRM', width=6, command=main, bg='Green', padx=2, pady=2).place(x=430,
                                                                                                               y=200)
 Button(window, font='arial 10 bold', text='RESTART', width=6, command=reset_game, bg='Grey', padx=2, pady=2).place(
