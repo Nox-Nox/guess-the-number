@@ -60,7 +60,7 @@ def main():
     number = Number.get()
     log(number)
     while number < 1 or number > 10:
-        ResultMessage.set("Your guessed number is out of the given range,\n please choose a number between 1 "
+        ResultMessage.set(f"Your guessed number {number} is out of the given range,\n please choose a number between 1 "
                           "to 10")
         window.wait_variable(Number)
     if number == ai_chosen_number:
@@ -84,23 +84,27 @@ def main():
         messagebox.showinfo("showinfo", "You lost")
         reset_game()
 
-
+Label(window, text="Round", font='arial 20 bold').pack()
 Label(window, textvariable=RoundNumber, font='arial 20 bold').pack()
-Label(window, textvariable=Victory, font='arial 20 bold').place(x=10, y=0)
-Label(window, textvariable=Defeat, font='arial 20 bold').place(x=430, y=0)
 
-Label(window, text="Pick a number", font='arial 10 bold').place(x=200, y=60)
-Entry(window, textvariable=Number, font='arial 10 bold').place(x=180, y=100)
+Label(window, textvariable=Victory, font='arial 20 bold').place(x=110, y=0)
+Label(window, text="Victories:", font='arial 18 bold').place(x=0, y=0)
+
+Label(window, textvariable=Defeat, font='arial 20 bold').place(x=478, y=0)
+Label(window, text="Defeats:", font='arial 18 bold').place(x=382, y=0)
+
+Label(window, text="Pick a number", font='arial 10 bold').place(x=200, y=100)
+Entry(window, textvariable=Number, font='arial 10 bold').place(x=180, y=140)
 
 Label(window, textvariable=ResultMessage, font='arial 12 bold').pack(side=BOTTOM)
 
 Button(window, font='arial 10 bold', text='EXIT', width=6, command=exit, bg='OrangeRed', padx=2, pady=2).place(x=10,
-                                                                                                               y=160)
+                                                                                                               y=200)
 Button(window, font='arial 10 bold', text='CONFIRM', width=6, command=main, bg='Green', padx=2, pady=2).place(x=430,
-                                                                                                              y=160)
+                                                                                                              y=200)
 Button(window, font='arial 10 bold', text='RESTART', width=6, command=reset_game, bg='Grey', padx=2, pady=2).place(
     x=220,
-    y=160)
+    y=200)
 
 if __name__ == '__main__':
     window.mainloop()
