@@ -30,39 +30,59 @@ def exit():
     window.destroy()
 
 
-def main():
-    global ai_chosen_number
-    global rounds
-    global victory
-    global defeat
-    number = Number.get()
+def log(number):
     print(f"round: {rounds}")
     print(f"victories: {victory}")
     print(f"defeats: {defeat}")
     print(f"1 AI chosen number: {ai_chosen_number}")
     print(f"chosen number: {number}")
 
-    if victory == 3 and rounds < 5:
-        while number < 1 or number > 10:
-            ResultMessage.set("Your guessed number is out of the given range,\n please choose a number between 1 "
-                              "to 10")
-            window.wait_variable(Number)
-        if number == ai_chosen_number:
-            ResultMessage.set("You guessed the right number!")
-            rounds += 1
-            RoundNumber.set(rounds)
-            victory += 1
-            Victory.set(victory)
-            reset_random_number()
-        else:
-            ResultMessage.set(f"You failed, the right number was {ai_chosen_number}, try again!")
-            rounds += 1
-            RoundNumber.set(rounds)
-            defeat += 1
-            Defeat.set(defeat)
-            reset_random_number()
+
+def reset_game():
+    global rounds
+    global victory
+    global defeat
+    rounds = 0
+    victory = 0
+    defeat = 0
+    Number.set("")
+    Victory.set("")
+    Defeat.set("")
+    RoundNumber.set("")
+
+
+def main():
+    global ai_chosen_number
+    global rounds
+    global victory
+    global defeat
+
+    number = Number.get()
+    log(number)
+    while number < 1 or number > 10:
+        ResultMessage.set("Your guessed number is out of the given range,\n please choose a number between 1 "
+                          "to 10")
+        window.wait_variable(Number)
+    if number == ai_chosen_number:
+        ResultMessage.set("You guessed the right number!")
+        rounds += 1
+        RoundNumber.set(rounds)
+        victory += 1
+        Victory.set(victory)
+        reset_random_number()
     else:
-        messagebox.showinfo("Wanna play again?")
+        ResultMessage.set(f"You failed, the right number was {ai_chosen_number}, try again!")
+        rounds += 1
+        RoundNumber.set(rounds)
+        defeat += 1
+        Defeat.set(defeat)
+        reset_random_number()
+    if victory == 3:
+        messagebox.showinfo("showinfo", "You won")
+        reset_game()
+    if defeat == 3:
+        messagebox.showinfo("showinfo", "You lost")
+        reset_game()
 
 
 Label(window, textvariable=RoundNumber, font='arial 20 bold').pack()
@@ -78,6 +98,9 @@ Button(window, font='arial 10 bold', text='EXIT', width=6, command=exit, bg='Ora
                                                                                                                y=160)
 Button(window, font='arial 10 bold', text='CONFIRM', width=6, command=main, bg='Green', padx=2, pady=2).place(x=430,
                                                                                                               y=160)
+Button(window, font='arial 10 bold', text='RESTART', width=6, command=reset_game, bg='Grey', padx=2, pady=2).place(
+    x=220,
+    y=160)
 
 if __name__ == '__main__':
     window.mainloop()
