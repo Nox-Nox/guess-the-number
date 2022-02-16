@@ -59,33 +59,35 @@ def main():
     global defeat
     number = Number.get()
     log(number)
+
     while number < 1 or number > 10:
         ResultMessage.set(
             f"Yo wtf? Can't you read? Is {number} a number between the given range?\n Please be less autistic and "
             f"choose a number between 1 to 10 ")
-        if number < 1 or number > 10:
-            window.wait_variable(Number)
+        window.wait_variable()
+    if number >= 1 or number <= 10:
 
-    if number == ai_chosen_number:
-        ResultMessage.set("Wow... what an ALPHA man.. you just made me tingle...")
-        rounds += 1
-        RoundNumber.set(rounds)
-        victory += 1
-        Victory.set(victory)
-        new_random_number()
-    else:
-        ResultMessage.set(
-            f"You failed lol, the right number was {ai_chosen_number} dumbass, \n try again if you wanna "
-            f"feel even more stupid :3")
-        rounds += 1
-        RoundNumber.set(rounds)
-        defeat += 1
-        Defeat.set(defeat)
-        new_random_number()
+        if number == ai_chosen_number:
+            ResultMessage.set("Wow... what an ALPHA man.. you just made me tingle...")
+            rounds += 1
+            RoundNumber.set(rounds)
+            victory += 1
+            Victory.set(victory)
+            new_random_number()
+        else:
+            ResultMessage.set(
+                f"You failed lol, the right number was {ai_chosen_number} dumbass, \n try again if you wanna "
+                f"feel even more stupid :3")
+            rounds += 1
+            RoundNumber.set(rounds)
+            defeat += 1
+            Defeat.set(defeat)
+            new_random_number()
 
     if victory == 3:
         messagebox.showinfo("Game result", "Oh... you are actually amazing... wanna go on a date with me? *blush*")
         reset_game()
+
     if defeat == 3:
         messagebox.showinfo("Game result", "LMAO WHAT A LOSER, don't you ever try again just press the exit button "
                                            "and go play Minecraft LMAO")
