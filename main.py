@@ -49,6 +49,7 @@ def reset_game():
     Victory.set(0)
     Defeat.set(0)
     RoundNumber.set(0)
+    ResultMessage.set("Are you retarded? just start already LMAO")
 
 
 def main():
