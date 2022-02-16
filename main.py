@@ -19,7 +19,7 @@ ResultMessage.set("Are you retarded? just start already LMAO")
 ai_chosen_number = random.randrange(1, 10)
 
 
-def reset_random_number():
+def new_random_number():
     global ai_chosen_number
     ai_chosen_number = random.randrange(1, 10)
     print(f"2 AI chosen number: {ai_chosen_number}")
@@ -61,27 +61,27 @@ def main():
     log(number)
     while number < 1 or number > 10:
         ResultMessage.set(
-            f"Yo wtf? can't you read? is {number} a number between the given range?\n please be less autistic and "
+            f"Yo wtf? Can't you read? Is {number} a number between the given range?\n Please be less autistic and "
             f"choose a number between 1 to 10 ")
         if number < 1 or number > 10:
             window.wait_variable(Number)
 
     if number == ai_chosen_number:
-        ResultMessage.set("Wow... what an alpha man...")
+        ResultMessage.set("Wow... what an ALPHA man.. you just made me tingle...")
         rounds += 1
         RoundNumber.set(rounds)
         victory += 1
         Victory.set(victory)
-        reset_random_number()
+        new_random_number()
     else:
         ResultMessage.set(
             f"You failed lol, the right number was {ai_chosen_number} dumbass, \n try again if you wanna "
-            f"feel even more stupid")
+            f"feel even more stupid :3")
         rounds += 1
         RoundNumber.set(rounds)
         defeat += 1
         Defeat.set(defeat)
-        reset_random_number()
+        new_random_number()
 
     if victory == 3:
         messagebox.showinfo("Game result", "Oh... you are actually amazing... wanna go on a date with me? *blush*")
