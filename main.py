@@ -1,6 +1,6 @@
 import random
-from tkinter import *
-from tkinter import messagebox
+
+from tkinter import BOTTOM, Button, Entry, IntVar, Label, StringVar, Tk, messagebox
 
 window = Tk()
 window.geometry("500x320")
@@ -110,10 +110,10 @@ Label(window, textvariable=ResultMessage, font='arial 12 bold').pack(side=BOTTOM
 
 Button(window, font='arial 10 bold', text='EXIT', width=6, command=exit, bg='Red', padx=2, pady=2).place(x=10,
                                                                                                          y=200)
-Button(window, font='arial 10 bold', text='CONFIRM', width=6, command=main, bg='Green', padx=2, pady=2).place(x=430,
+Button(window, font='arial 10 bold', text='CONFIRM', width=10, command=main, bg='Green', padx=2, pady=2).place(x=400,
                                                                                                               y=200)
-Button(window, font='arial 10 bold', text='RESTART', width=6, command=reset_game, bg='Grey', padx=2, pady=2).place(
-    x=220,
+Button(window, font='arial 10 bold', text='RESTART', width=10, command=reset_game, bg='Grey', padx=2, pady=2).place(
+    x=200,
     y=200)
 
 if __name__ == '__main__':
