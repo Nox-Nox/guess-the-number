@@ -1,10 +1,9 @@
 import random
-
 from tkinter import BOTTOM, Button, Entry, IntVar, Label, StringVar, Tk, messagebox
 
 window = Tk()
 window.geometry("500x320")
-window.resizable(None)
+window.resizable(False, False)
 window.title("Guess the number noob :3")
 
 rounds = 0
@@ -66,7 +65,6 @@ def main():
             f"choose a number between 1 to 10 ")
         window.wait_variable()
     if number >= 1 or number <= 10:
-
         if number == ai_chosen_number:
             ResultMessage.set("Wow... what an ALPHA man.. you just made me tingle...")
             rounds += 1
